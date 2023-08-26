@@ -31,6 +31,7 @@ export default function MainScreen({navigation}) {
             <Button
                 title='Add Player'
                 onPress={() => navigation.navigate('New Player')}
+                color='#0446AB'
             />
             <PlayerList />
         </View>
