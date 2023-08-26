@@ -14,13 +14,18 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": "true",
+      "supportsTablet": true,
       "bundleIdentifier": "com.geeoon.moneypot",
       "buildNumber": "1.0.0"
     },
     "android": {
       "package": "com.geeoon.moneypot",
       "versionCode": 1
+    },
+    "extra": {
+      "eas": {
+        "projectId": "8c9aecf0-1ce0-449f-b8cf-27b5ded486fb"
+      }
     }
   },
   "name": "MoneyPot"
