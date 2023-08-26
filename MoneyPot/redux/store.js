@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import playersReducer from './Players/playersSlice';
 import {
     persistReducer,
     FLUSH,
@@ -11,7 +12,7 @@ import {
 } from 'redux-persist';
 
 const reducers = combineReducers({
-
+    players: playersReducer
 });
 
 const persistConfig = {
