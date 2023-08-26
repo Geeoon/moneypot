@@ -12,7 +12,6 @@ export default function NewPlayerScreen({navigation}) {
     const [buyIn, setBuyIn] = useState(defaultBuyIn);
 
     useEffect(() => {
-        console.log(defaultBuyIn);
         parseInputs();
     }, []);
 
@@ -36,30 +35,47 @@ export default function NewPlayerScreen({navigation}) {
             return;
         }
         dispatch(addPlayer({name: name, buyIn: buy,}));
+        Alert.alert("Added player!");
     }, [parseInputs, playerArray]);
 
 
     return (
         <View style={styles.container}>
-            <Text>Player Name: </Text>
-            <TextInput
-                onChangeText={text => setPlayerName(text)}
-                value={playerName}
-            />
-            <Text>Buy-in: </Text>
-            <TextInput
-                onChangeText={text => setBuyIn(text)}
-                onEndEditing={(e) => setBuyIn(parseFloat(e.nativeEvent.text).toFixed(2))}
-                value={'' + buyIn}
-                inputMode='decimal'
-            />
-            <Button
-                title='Add Player'
-                onPress={() => { 
-                    submit();
-                    Alert.alert("Added player!");
-                }}
-            />
+            <View style={styles.sideBySide}>
+                <Text style={styles.text}>Player Name: </Text>
+                <TextInput
+                    onChangeText={text => setPlayerName(text)}
+                    value={playerName}
+                    style={styles.nameInput}
+                />
+            </View>
+            <View style={styles.sideBySide}>
+                <Text style={styles.text}>Buy-in: $</Text>
+                <TextInput
+                    onChangeText={text => setBuyIn(text)}
+                    onEndEditing={(e) => setBuyIn(parseFloat(e.nativeEvent.text).toFixed(2))}
+                    value={'' + buyIn}
+                    inputMode='decimal'
+                    style={styles.buyInInput}
+                />
+            </View>
+            <View style={styles.options}>
+                <View style={{flex: 1, paddingRight: 5,}}>
+                    <Button
+                        title='Add Player'
+                        onPress={() => { 
+                            submit();
+                            setPlayerName('');
+                        }}
+                    />
+                </View>
+                <Button
+                    title='Done!'
+                    onPress={() => {
+                        navigation.navigate('Main');
+                    }}
+                />
+            </View>
         </View>
     );
 }
@@ -70,7 +86,33 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFF',
         padding: 20,
     },
-    background: {
-        flex: 1,
+    text: {
+        fontSize: 20,
     },
+    nameInput: {
+        flex: 1,
+        color: 'white',
+        backgroundColor: '#333333',
+        fontSize: 20,
+        padding: 4
+    },
+    buyInInput: {
+        width: 100,
+        color: 'white',
+        backgroundColor: '#333',
+        fontSize: 20,
+        padding: 4
+    },
+    modifyInput: {
+        width: 100,
+        color: 'white',
+        backgroundColor: '#333333',
+    },
+    sideBySide: {
+        flexDirection: 'row',
+        marginBottom: 5,
+    },
+    options: {
+        flexDirection: 'row',
+    }
 });

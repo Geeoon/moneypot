@@ -11,19 +11,34 @@ export const playersSlice = createSlice({
         addPlayer: (state, action) => {
             state.players.push({
                 name: action.payload.name,
-                balance: action.payload.buyIn,
+                balance: Number(-action.payload.buyIn),
             });
-            console.log(`Add ${action.payload.name} with ${action.payload.buyIn} buy in.`);
+            state.lastBuyIn = Number(action.payload.buyIn);
+        },
+
+        rebuy: (state, action) => {
+            const index = state.players.findIndex((player) => player.name === action.payload.name);
+            if (index === -1) {
+                return;
+            }
+            state.players[index].balance -= Number(action.payload.amount);
+        },
+
+        cashOut: (state, action) => {
+            const index = state.players.findIndex((player) => player.name === action.payload.name);
+            if (index === -1) {
+                return;
+            }
+            state.players[index].balance += Number(action.payload.amount);
         },
 
         resetAll: (state) => {
             state.players = initial.players;
             state.lastBuyIn = initial.lastBuyIn;
-            console.log("reset!");
         },
     },
 });
 
-export const { addPlayer, resetAll } = playersSlice.actions;
+export const { addPlayer, resetAll, rebuy, cashOut } = playersSlice.actions;
 
 export default playersSlice.reducer;

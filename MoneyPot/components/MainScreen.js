@@ -26,6 +26,7 @@ export default function MainScreen({navigation}) {
                         }
                     ]);
                 }}
+                color='#F71C36'
             />
             <Button
                 title='Add Player'

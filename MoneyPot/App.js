@@ -22,7 +22,7 @@ export default function App() {
           <Stack.Screen
             name="Main"
             component={MainScreen}
-            options={{title: 'Total Buy-Ins/Cash-Outs'}}
+            options={{title: 'Player Balances'}}
           />
           <Stack.Screen
             name="New Player"
