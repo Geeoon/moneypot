@@ -9,25 +9,17 @@ import NewPlayerScreen from './components/NewPlayerScreen';
 import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
 
-SplashScreen.preventAutoHideAsync();
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [fontsLoaded] = useFonts({
     'Coffee-Tin': require('./assets/fonts/coffeetin.ttf'),
   });
-
-  const onLayoutRootView = useCallback(async() => {
-    if (fontsLoaded) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded]);
-
   const navRef = createRef();
 
   return (
     <NavigationContainer ref={navRef}>
-      <View style={{flex: 1, backgroundColor: '#155843'}} onLayout={onLayoutRootView}>
+      <View style={{flex: 1, backgroundColor: '#155843'}}>
         <Stack.Navigator
           initialRouteName='Main'
           screenOptions={{
