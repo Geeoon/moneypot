@@ -94,12 +94,14 @@ const styles = StyleSheet.create({
         marginLeft: 5,
         backgroundColor: '#F1F0F1',
         paddingLeft: 5,
-        fontSize: 20
+        fontSize: 20,
     },
     name: {
-        color: '#F1F0F1',
+        color: '#FFFFFF',
         fontSize: 25,
         flex: 1,
+        fontFamily: 'Coffee-Tin',
+
     },
     balance: {
         color: '#F1F0F1',

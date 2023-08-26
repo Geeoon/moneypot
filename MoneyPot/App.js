@@ -1,4 +1,4 @@
-import { createRef } from 'react';
+import { createRef, useCallback } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator, createNavigationStack } from '@react-navigation/native-stack';
@@ -6,13 +6,28 @@ import React from 'react';
 import { View } from 'react-native';
 import MainScreen from './components/MainScreen';
 import NewPlayerScreen from './components/NewPlayerScreen';
+import * as SplashScreen from 'expo-splash-screen';
+import { useFonts } from 'expo-font';
 
+SplashScreen.preventAutoHideAsync();
 const Stack = createNativeStackNavigator();
+
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    'Coffee-Tin': require('./assets/fonts/coffeetin.ttf'),
+  });
+
+  const onLayoutRootView = useCallback(async() => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
   const navRef = createRef();
+
   return (
     <NavigationContainer ref={navRef}>
-      <View style={{flex: 1, backgroundColor: '#155843'}}>
+      <View style={{flex: 1, backgroundColor: '#155843'}} onLayout={onLayoutRootView}>
         <Stack.Navigator
           initialRouteName='Main'
           screenOptions={{
