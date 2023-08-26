@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     },
     name: {
         color: '#FFFFFF',
-        fontSize: 25,
+        fontSize: 30,
         flex: 1,
         fontFamily: 'Coffee-Tin',
 
