@@ -4,14 +4,12 @@
     "slug": "MoneyPot",
     "version": "1.0.0",
     "orientation": "portrait",
-    
-    "icon": "",
+    "icon": "./assets/images/icon.png",
     "splash": {
-      "image": "",
+      "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#F71C36"
     },
-
     "assetBundlePatterns": [
       "**/*"
     ],
