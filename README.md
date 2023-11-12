@@ -1,4 +1,6 @@
 # MoneyPot
+[Google Play Store](https://play.google.com/store/apps/details?id=com.geeoon.moneypot "Link to App")
+
 This app serves as a way to help manage your money in home poker games.
 
 It allows for:
